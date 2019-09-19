@@ -87,10 +87,15 @@ function validarregistro() {
 
 function cambiar(){	
     var div = document.getElementById('autoridades');
+    let divbtn=document.getElementById("modifiauto");
     while(div.hasChildNodes()){
     div.removeChild(div.firstChild);
     }
-    desbloquear();   
+    while(divbtn.hasChildNodes()){
+        divbtn.removeChild(divbtn.firstChild);
+    }
+    desbloquear();
+
 }
 function desbloquear(){
     document.getElementById("cantidadAut").disabled = false;
@@ -107,12 +112,12 @@ function mostrarAutoridades() {
        
         let contAutoridad=document.createElement("h4");
 
-          let autoridad  = document.createElement("div");
-          autoridad.className = "col-md-6";
-          autoridad.id = "auto"+(i+1);
-            contAutoridad.appendChild(document.createTextNode("Autoridad N°: " +(i+1)));
-            autoridad.appendChild(contAutoridad);
-            autoridad.appendChild(br);
+        let autoridad  = document.createElement("div");
+        autoridad.className = "col-md-6";
+        autoridad.id = "auto"+(i+1);
+        contAutoridad.appendChild(document.createTextNode("Autoridad N°: " +(i+1)));
+        autoridad.appendChild(contAutoridad);
+        autoridad.appendChild(br);
 
         var labelApe = document.createElement("label");
         labelApe.setAttribute("for","apellidoAut"+(i+1));
@@ -120,6 +125,7 @@ function mostrarAutoridades() {
         var inputApe = document.createElement("input");
         inputApe.setAttribute("type","text");
         inputApe.setAttribute("name","apellidoAut"+(i+1));
+        inputApe.setAttribute("id","apellidoAut"+(i+1));
         inputApe.setAttribute("required","");
         inputApe.className="form-control";
         var divconformApe =  document.createElement("div");
@@ -134,6 +140,7 @@ function mostrarAutoridades() {
         var inputNom = document.createElement("input");
         inputNom.setAttribute("type","text");
         inputNom.setAttribute("name","nombreAut"+(i+1));
+        inputNom.setAttribute("id","nombreAut"+(i+1));
         inputNom.setAttribute("required","");
         inputNom.className="form-control";
         var divconformNom =  document.createElement("div");
@@ -148,6 +155,7 @@ function mostrarAutoridades() {
         var inputCar = document.createElement("input");
         inputCar.setAttribute("type","text");
         inputCar.setAttribute("name","cargoAut"+(i+1));
+        inputCar.setAttribute("id","cargoAut"+(i+1));
         inputCar.setAttribute("required","");
         inputCar.className="form-control";
         var divconformCar =  document.createElement("div");
@@ -163,6 +171,7 @@ function mostrarAutoridades() {
         var inputFirma = document.createElement("input");
         inputFirma.setAttribute("type","file");
         inputFirma.setAttribute("name","firmaAut"+(i+1));
+        inputFirma.setAttribute("id","firmaAut"+(i+1));
         //inputFirma.setAttribute("required","");
         inputFirma.className="custom-file-input";
         var labelFirma1 = document.createElement("label");
@@ -181,22 +190,29 @@ function mostrarAutoridades() {
 
 document.getElementById("cantidadAut").disabled = true;
 document.getElementById('botonmostrar').disabled = true;
+
 var boton = document.createElement('input');
 boton.setAttribute('type','button');
 boton.setAttribute('value','Modificar cantidad');
 boton.setAttribute('onclick',"cambiar()");
-divAutoridades.appendChild(boton);
-
+//divAutoridades.appendChild(boton);
+document.getElementById("modifiauto").appendChild(boton);
 //console.log(autoridad);
     
 }
 
 function cambiar1(){	
     var div = document.getElementById("expositores");
+    var divbtn=document.getElementById("modifiexpo");
     while(div.hasChildNodes()){
     div.removeChild(div.firstChild);
     }
+    while(divbtn.hasChildNodes()){
+        divbtn.removeChild(divbtn.firstChild);
+    }
+
     desbloquear1();
+
     
 }
 
@@ -228,6 +244,7 @@ function mostrarExpositores() {
         var inputApeExp = document.createElement("input");
         inputApeExp.setAttribute("type","text");
         inputApeExp.setAttribute("name","apellidoExp"+(i+1));
+        inputApeExp.setAttribute("id","apellidoExp"+(i+1));
         inputApeExp.setAttribute("required","");
         inputApeExp.className="form-control";
         var divconformApeExp =  document.createElement("div");
@@ -242,6 +259,7 @@ function mostrarExpositores() {
         var inputNomExp = document.createElement("input");
         inputNomExp.setAttribute("type","text");
         inputNomExp.setAttribute("name","nombreExp"+(i+1));
+        inputNomExp.setAttribute("id","nombreExp"+(i+1));
         inputNomExp.setAttribute("required","");
         inputNomExp.className="form-control";
         var divconformNomExp =  document.createElement("div");
@@ -256,6 +274,7 @@ function mostrarExpositores() {
         var inputDniExp = document.createElement("input");
         inputDniExp.setAttribute("type","text");
         inputDniExp.setAttribute("name","dniExp"+(i+1));
+        inputDniExp.setAttribute("id","dniExp"+(i+1));
         inputDniExp.setAttribute("required","");
         inputDniExp.className="form-control";
         var divconformDniExp =  document.createElement("div");
@@ -270,6 +289,7 @@ function mostrarExpositores() {
         var inputTitulo = document.createElement("input");
         inputTitulo.setAttribute("type","text");
         inputTitulo.setAttribute("name","tituloExp"+(i+1));
+        inputTitulo.setAttribute("id","tituloExp"+(i+1));
         inputTitulo.setAttribute("required","");
         inputTitulo.className="form-control";
         var divTitulo=  document.createElement("div");
@@ -288,10 +308,15 @@ var boton1 = document.createElement('input');
 boton1.setAttribute('type','button');
 boton1.setAttribute('value','Modificar cantidad');
 boton1.setAttribute('onclick',"cambiar1()");
-divExpositores.appendChild(boton1);
-
+//divExpositores.appendChild(boton1);
+document.getElementById("modifiexpo").appendChild(boton1);
     
 }
+
+//la funcion guardarDatos() esta vinculada a gestionCurso_css y muestra los datos del formulario;
+// la funcion guardarexpoaut() esta vinculada a gestionCurso_css copy y muestra los datos de las 
+    //autoridades y los expositores generados a partir del dom; 
+
 
 function guardarDatos() {
     let nombreCurso = document.getElementById("nombreCurso").value,
@@ -307,7 +332,6 @@ function guardarDatos() {
     cupoMinimo = document.getElementById("cupoMinimo").value,
 
    // cantidadAut = document.getElementById("cantidadAut").value,
-
     //apellidoAut= document.getElementById("apellidoAut"+(i+1)).value,
     //nombreAut= document.getElementById("cupoMinimo"+(i+1)).value,
     //cargoAut = document.getElementById("cargoAut"+(i+1)).value,
@@ -363,7 +387,7 @@ class Curso{
         this.costoCurso= costoCurso; 
         this.cupoMaximo=  cupoMaximo;
         this.cupoMinimo = cupoMinimo ;
-
+        
         this.expositor=expositor;
         this.autoridad=autoridad;
     }
@@ -387,46 +411,47 @@ class Expositor{
         this.dniExp=dniExp;
         this.tituloExp=tituloExp;    
     }
-    expositoress (){
-for (let index = 0; index < array.length; index++) {
-    const element = array[index];
-    
-}
-    }
-    imprimirsaldo(){
-        return `hola ${this.nombre},tu saldo es ${this.saldo}`   //alt+96
-    }
-    
+
 }
 
 function guardarexpoaut() {
-    let  cantidadAut = document.getElementById("cantidadAut").value,
-
-    cantidadExp = document.getElementById("cantidadExp").value;
-    
-    
+    let cantidadAut = document.getElementById("cantidadAut").value,
+        lista1= document.getElementById("mostrarexpo"),
+        lista2= document.getElementById("mostrarauto"),
+        cantidadExp = document.getElementById("cantidadExp").value;
 
      for (let i = 0; i < cantidadExp; i++) {
-``
+
         let apellidoExp = document.getElementById("apellidoExp"+(i+1)).value,
         nombreExp = document.getElementById("nombreExp"+(i+1)).value,
         dniExp = document.getElementById("dniExp"+(i+1)).value,
         tituloExp = document.getElementById("tituloExp"+(i+1)).value;
         let expositor = new Expositor(cantidadExp,apellidoExp,nombreExp,dniExp,tituloExp); 
         console.log(expositor);
+
+        let li= document.createElement("li");
+        //li.className="lista"+(i+1);
+        li.id="listaexpo"+(i+1)
+        li.appendChild(document.createTextNode("EXPOSITOR "+(i+1)+" : " + "nombre: " +  nombreExp +", apellido: " + apellidoExp +
+        ", DNI: " +dniExp+  ", titulo: " +tituloExp));
+
+        lista1.appendChild(li);
+
     }
     for (let i = 0; i < cantidadAut; i++) {
         var  apellidoAut= document.getElementById("apellidoAut"+(i+1)).value,
-        nombreAut= document.getElementById("cupoMinimo"+(i+1)).value,
+        nombreAut= document.getElementById("nombreAut"+(i+1)).value,
         cargoAut = document.getElementById("cargoAut"+(i+1)).value,
         firmaAut= document.getElementById("firmaAut"+(i+1)).value;
         let autoridad = new Autoridad(cantidadAut,apellidoAut,nombreAut,cargoAut,firmaAut);
-        console.log(autoridad);
+        console.log(autoridad);//para mostrarlo por consola tambien 
+ 
+        let liauto = document.createElement("li");
+        liauto.id="listaauto"+(i+1);
+        liauto.appendChild(document.createTextNode("AUTORIDAD "+(i+1)+" : " + "Nombre: " +  nombreAut +", Apellido: " + apellidoAut +
+        ", Cargo: " + cargoAut ));
+        lista2.appendChild(liauto);
+
     }
 
-    //console.log(expositor);
-    //console.log(autoridad);
 }
-
-
-

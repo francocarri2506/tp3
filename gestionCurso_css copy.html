@@ -20,7 +20,7 @@
                 <div class="container">
                     <h2>Gestión de cursos</h2>
                 </div>
-                <form action="resultadoGestionCurso.html" method="post" >
+                <form action="" method="post" >
                     <div class="container">
                         <div class="row">
                             
@@ -38,8 +38,15 @@
                         </div>
                         <div class="row" id="autoridades">
                             <!--
-
+                            //aca se insertaran cada una de las autoridades
                             -->
+                        </div>
+                        <div class="row" id="modifiauto">  
+
+                            <!--
+                            para el boton modificar que este responsivo
+                            -->
+                               
                         </div>
 
                         <div class="row">
@@ -58,19 +65,47 @@
                         
                         <div class="row" id="expositores">  
 
-                                
+                                <!--
+                            //aca se insertaran los campos de cada uno de los expositores
+                            -->
+                               
+                        </div>
+                        <div class="row" id="modifiexpo">  
+
+                            <!--
+                            para el boton modificar que este responsivo
+                            -->
                                
                         </div>
 
                         <br>
+                        
+                            <!--   
+                                <a class="btn btn-primary" href="#" role="button" onclick="return guardarexpoaut()">Link</a>
+                            --> 
+                        <div class="row">
+
+                            <div class="mostrar">
+                                <h3>Autoridades</h3>
+                                <ul id="mostrarauto">
+
+                                </ul>
+
+                                <br>
+                                <h3>Expositores</h3>
+                                <ul id="mostrarexpo">
+
+                                    </ul>
+                            </div>
+                        </div>
+                            
                         <div class="row justify-content-md-center">
                             <div class="col-md-auto">
-                                <input type="submit" value="Agregar curso" onclick="guardarexpoaut() ">
+                                <input type="button" value="Agregar curso" onclick="return guardarexpoaut() ">
                                 <input type="reset" value="Nuevo curso">
                                 <input type="submit" value="Aceptar" >
                             </div>
-                        
-                    </div>
+                        </div>
                 </form>
             </section>
             <footer>
